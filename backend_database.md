@@ -6,7 +6,7 @@ PostgreSQL Function
 Create the following function in your PostgreSQL database to fetch details for a specific flashcard set, including all associated flashcards, based on the set and user IDs.
 
 sql
-'''
+```
 CREATE OR REPLACE FUNCTION get_flashcard_set_details(userId INTEGER, setId INTEGER)
 RETURNS TABLE(
     set_id INTEGER,
@@ -34,7 +34,7 @@ BEGIN
         fs.set_id = setId AND fs.user_id = userId;
 END; $$
 LANGUAGE plpgsql;
-'''
+```
 
 Backend Setup
 Ensure your backend is set up with Express.js and can connect to your PostgreSQL database. The following steps detail creating a secure endpoint to fetch flashcard set details.
@@ -45,14 +45,14 @@ Use Express.js to create an endpoint that authenticates users via JWT and fetche
 Dependencies
 Install the required packages:
 
-'''
+```
 npm install express pg jsonwebtoken
-'''
+```
 
 Server Configuration
 Set up your Express server (server.js or app.js) with the following code:
 
-'''
+```
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const pool = require('./db'); // Make sure this points to your db.js file
@@ -90,7 +90,7 @@ app.get('/user/flashcard-sets/:setId', authenticateToken, async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-'''
+```
 Replace process.env.ACCESS_TOKEN_SECRET with your JWT secret key.
 
 React Frontend
@@ -98,7 +98,7 @@ Implement the FlashcardSetDetails component to fetch and display flashcard set d
 
 FlashcardSetDetails Component
 
-'''
+```
 import React, { useState, useEffect } from 'react';
 
 function FlashcardSetDetails({ setId }) {
@@ -129,7 +129,7 @@ function FlashcardSetDetails({ setId }) {
 }
 
 export default FlashcardSetDetails;
-'''
+```
 Testing
 Authentication: Test the login flow and ensure the JWT token is stored and sent with requests.
 API Requests: Use tools like Postman to test the endpoint directly, ensuring it responds correctly before integrating with the frontend.
