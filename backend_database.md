@@ -1,7 +1,7 @@
-Flashcard App Implementation Guide
+### Flashcard App Implementation Guide
 This guide provides instructions on setting up the backend functionality to securely access flashcard sets from a PostgreSQL database and display them in a React frontend, ensuring that users can only access their data.
 
-Database Setup
+### Database Setup
 PostgreSQL Function
 Create the following function in your PostgreSQL database to fetch details for a specific flashcard set, including all associated flashcards, based on the set and user IDs.
 
@@ -36,20 +36,20 @@ END; $$
 LANGUAGE plpgsql;
 ```
 
-Backend Setup
+### Backend Setup
 Ensure your backend is set up with Express.js and can connect to your PostgreSQL database. The following steps detail creating a secure endpoint to fetch flashcard set details.
 
 Secure Backend Endpoint
 Use Express.js to create an endpoint that authenticates users via JWT and fetches flashcard set details.
 
-Dependencies
+### Dependencies
 Install the required packages:
 
 ```
 npm install express pg jsonwebtoken
 ```
 
-Server Configuration
+### Server Configuration
 Set up your Express server (server.js or app.js) with the following code:
 
 ```
@@ -93,7 +93,7 @@ app.listen(port, () => {
 ```
 Replace process.env.ACCESS_TOKEN_SECRET with your JWT secret key.
 
-React Frontend
+### React Frontend
 Implement the FlashcardSetDetails component to fetch and display flashcard set details, using authentication tokens for secure access.
 
 FlashcardSetDetails Component
@@ -130,7 +130,7 @@ function FlashcardSetDetails({ setId }) {
 
 export default FlashcardSetDetails;
 ```
-Testing
+### Testing
 Authentication: Test the login flow and ensure the JWT token is stored and sent with requests.
 API Requests: Use tools like Postman to test the endpoint directly, ensuring it responds correctly before integrating with the frontend.
 Frontend Integration: Verify that the FlashcardSetDetails component correctly fetches and displays the data.
